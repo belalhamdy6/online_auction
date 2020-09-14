@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block body %}
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>{{job.title}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+
+  <!-- featured_candidates_area_start  -->
+    <div class="featured_candidates_area mt-30">
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="candidate_active owl-carousel">
+                          <div class=" text-center">
+                            <div class="">
+                              <a href=""> <img src="{{job.image_a.url }}" alt=""></a>
+                            </div>
+
+                        </div>
+                        <div class=" text-center">
+                            <div class="">
+                              <a href=""> <img src="{{job.image_b.url}} " alt=""></a>
+                            </div>
+
+                        </div>
+                        <div class=" text-center">
+                            <div class="">
+                              <a href=""> <img src="{{job.image_c.url }}" alt=""></a>
+                            </div>
+
+                        </div>
+                        <div class=" text-center">
+                            <div class="">
+                              <a href=""> <img src="{{job.image_d.url }} " alt=""></a>
+                            </div>
+
+                        </div>
+                        <div class=" text-center">
+                            <div class="">
+                              <a href=""> <img src="{{job.image_e.url }}" alt=""></a>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+     <!-- featured_candidates_area_start  -->
+
+
+    <div class="job_details_area" style="margin-top:-80px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="job_details_header">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb" style="padding:0px;">
+                                    <img src="{{job.image.url}}" alt="" class="belal">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a href="#"><h4>{{job.title}} {{job.name}}</h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> {{job.city}}</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-clock-o"></i> {{job.car_type}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="jobs_right">
+                                <div class="apply_now">
+<!--                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>-->
+                                     {% if job.bid_on == "On_Bid" %}
+                                    <a class="heart_mark" href="{% url 'jobs:bid' job.slug %}"> <i class="fa fa-gavel" style="font-size:20pt;margin-top:6px"></i>  </a>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="descript_wrap white-bg">
+                        <div class="single_wrap">
+                            <h4>Car description</h4>
+                            <p>{{job.descreption}}</p>
+                        </div>
+<!--                        <div class="single_wrap">-->
+<!--                            <h4>Responsibility</h4>-->
+<!--                            <ul>-->
+<!--                                <li>The applicants should have experience in the following areas.-->
+<!--                                </li>-->
+<!--                                <li>Have sound knowledge of commercial activities.</li>-->
+<!--                                <li>Leadership, analytical, and problem-solving abilities.</li>-->
+<!--                                <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                        <div class="single_wrap">-->
+<!--                            <h4>Qualifications</h4>-->
+<!--                            <ul>-->
+<!--                                <li>The applicants should have experience in the following areas.-->
+<!--                                </li>-->
+<!--                                <li>Have sound knowledge of commercial activities.</li>-->
+<!--                                <li>Leadership, analytical, and problem-solving abilities.</li>-->
+<!--                                <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                        <div class="single_wrap">-->
+<!--                            <h4>Benefits</h4>-->
+<!--                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>-->
+<!--                        </div>-->
+                    </div>
+                    <div class="apply_job_form ">
+<!--                        <h4>Apply for the job</h4>-->
+
+
+
+<!--                            <form  method="post" class="form" enctype="multipart/form-data">-->
+<!--                              {% csrf_token %}-->
+<!--                              {% bootstrap_form form %}-->
+<!--                              {% buttons %}-->
+<!--                                <div class="col-md-12">-->
+<!--                                    <div class="submit_btn">-->
+<!--                                        <button class="boxed-btn3 w-100" type="submit">Apply Now</button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                              {% endbuttons %}-->
+<!--                            </form>-->
+
+
+
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="job_sumary">
+                        <div class="summery_header">
+                            <h3>Car Summery</h3>
+                        </div>
+                        <div class="job_content">
+                            <ul>
+
+                                <li>Published on: <span>{{job.published_at|date:"d M"}},{{job.published_at|date:"Y"}}</span></li>
+                                <li>price: <span>{{job.price}} pound</span></li>
+                                <li>mileage: <span>{{job.mileage}} KM</span></li>
+                                <li>Car Engine : <span>{{job.engine}} CC</span></li>
+                                <li>Transmission type : <span>{{job.transmission}} </span></li>
+                                <li>Body Color: <span>{{job.color}}</span></li>
+                                <li>model: <span>{{job.model_car}}</span></li>
+                                <li>Body style: <span>{{job.car_type}}</span></li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="share_wrap d-flex">
+                        <span>Share at:</span>
+                        <ul>
+                            <li><a href="#"> <i class="fa fa-facebook"></i></a> </li>
+                            <li><a href="#"> <i class="fa fa-google-plus"></i></a> </li>
+                            <li><a href="#"> <i class="fa fa-twitter"></i></a> </li>
+                            <li><a href="#"> <i class="fa fa-envelope"></i></a> </li>
+                        </ul>
+                    </div>
+                    <div class="job_location_wrap">
+                        <div class="job_lok_inner">
+                            <div id="map" style="height: 200px;"></div>
+                            <script>
+                              function initMap() {
+                                var uluru = {lat: -25.363, lng: 131.044};
+                                var grayStyles = [
+                                  {
+                                    featureType: "all",
+                                    stylers: [
+                                      { saturation: -90 },
+                                      { lightness: 50 }
+                                    ]
+                                  },
+                                  {elementType: 'labels.text.fill', stylers: [{color: '#ccdee9'}]}
+                                ];
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                  center: {lat: -31.197, lng: 150.744},
+                                  zoom: 9,
+                                  styles: grayStyles,
+                                  scrollwheel:  false
+                                });
+                              }
+                              
+                            </script>
+                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
+                            
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

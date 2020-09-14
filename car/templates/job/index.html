@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block body %}
+    <!-- slider_area_start -->
+    <div class="slider_area">
+        <div class="single_slider  d-flex align-items-center slider_bg_1">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 col-md-6">
+                        <div class="slider_text">
+                            <h5 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">{{cars.count}}+ Cars listed</h5>
+                            <h3 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".3s">Find your Dream Car</h3>
+                            <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">This is First Online Auction On Middle East</p>
+                            <div class="sldier_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".5s">
+                                 {% if request.user.is_authenticated %}
+                                <a href="" class="boxed-btn3"> welcome {{user}}</a>
+                                {% else %}
+                                <a href="{% url 'accounts:signup'%}" class="boxed-btn3">Sign Up</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ilstration_img wow fadeInRight d-none d-lg-block text-right" data-wow-duration="1s" data-wow-delay=".2s">
+            <img src="{% static 'img/banner/illustration.png'%}" alt="">
+        </div>
+    </div>
+    <!-- slider_area_end -->
+
+
+
+
+
+ 
+
+    <!-- featured_candidates_area_start  -->
+    <div class="featured_candidates_area ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mt-30">
+                    <div class="section_title  mb-40 ">
+                        <h3 >Like New</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="candidate_active owl-carousel">
+
+
+                        {% for car in cars %}
+                        {% if car.Category == "New" %}
+
+                        <div class=" text-center">
+                            <div class="">
+                              <a href="{% url 'jobs:job_details' car.slug %}"> <img src="{{car.image.url}}" alt=""></a>
+                            </div>
+                            <a href="{% url 'jobs:job_details' car.slug %}"><h4>{{car.title}}</h4></a>
+                            <p>{{car.car_type}}</p>
+                        </div>
+                        {% endif %}
+                       {% endfor%}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="featured_candidates_area ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mt-30">
+                    <div class="section_title  mb-40 ">
+                        <h3 >Used Car</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="candidate_active owl-carousel">
+
+
+                        {% for car in cars %}
+                        {% if car.Category == "Used" %}
+
+                        <div class="text-center">
+                            <div class="">
+                              <a href="{% url 'jobs:job_details' car.slug %}"> <img src="{{car.image.url}}" alt=""></a>
+                            </div>
+                            <a href="{% url 'jobs:job_details' car.slug %}"><h4>{{car.title}}</h4></a>
+                            <p>{{car.car_type}}</p>
+                        </div>
+                        {% endif %}
+                       {% endfor%}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="featured_candidates_area ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mt-30">
+                    <div class="section_title  mb-40 ">
+                        <h3 >Crashed Car</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="candidate_active owl-carousel">
+
+
+                        {% for car in cars %}
+                        {% if car.Category == "Crashed" %}
+
+                        <div class="text-center">
+                            <div class="">
+                              <a href="{% url 'jobs:job_details' car.slug %}"> <img src="{{car.image.url}}" alt=""></a>
+                            </div>
+                            <a href="{% url 'jobs:job_details' car.slug %}"><h4>{{car.title}}</h4></a>
+                            <p>{{car.car_type}}</p>
+                        </div>
+                        {% endif %}
+                       {% endfor%}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="top_companies_area">
+        <div class="container">
+            <div class="row align-items-center mb-40">
+                <div class="col-lg-6 col-md-6">
+                    <div class="section_title">
+                        <h3>Top Companies</h3>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="brouse_job text-right">
+                        <a href="{% url 'jobs:job_list' %}" class="boxed-btn4">Browse More Job</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_company">
+                        <div class="">
+                            <img src="{%static 'img/svg_icon/kia.jpg'%}" alt="" style="width:190px;">
+                        </div>
+                        <a href="jobs.html"><h3>KIA</h3></a>
+                        <p>  Available </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_company">
+                        <div class="">
+                            <img src="{%static 'img/svg_icon/porsche.jpg'%}" alt="" style="width:180px;">
+                        </div>
+                        <a href="jobs.html"><h3>Porsche</h3></a>
+                        <p>  Available </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_company">
+                        <div class="">
+                            <img src="{%static 'img/svg_icon/nisan.jpg'%}" alt="" style="width:200px;height:106px">
+                        </div>
+                        <a href="jobs.html"><h3>Nisan</h3></a>
+                        <p> Available</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_company">
+                        <div class="">
+                            <img src="{% static 'img/svg_icon/skoda.jpg' %}" alt="" style="width:200px;height:106px">
+                        </div>
+                        <a href="jobs.html"><h3>Skoda</h3></a>
+                        <p>  Available </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- job_searcing_wrap  -->
+    <div class="job_searcing_wrap overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 offset-lg-1 col-md-6">
+                    <div class="searching_text">
+                        <h3>Looking for a Car</h3>
+                        <p>Here..you can find your car </p>
+                        <a href="{% url 'jobs:job_list' %}" class="boxed-btn3">Browse Job</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1 col-md-6">
+                    <div class="searching_text">
+                        <h3>Post your Car..</h3>
+                        <p>Sign in First  </p>
+                        <a href="{% url 'jobs:add'%}" class="boxed-btn3">Post a Car</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- job_searcing_wrap end  -->
+
+   
+
+{% endblock %}

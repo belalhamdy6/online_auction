@@ -1,0 +1,150 @@
+
+{% extends 'base.html'%}
+{% load bootstrap4 %}
+{% load static %}
+{% block body%}
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1 mb-40" >
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!-- featured_candidates_area_start  -->
+    <div class="featured_candidates_area mt-30">
+        <div class="container">
+
+
+               <div class="row">
+                <div class="col-lg-12">
+                    <div class="candidate_active owl-carousel">
+                          <div class=" text-center">
+                            <div class="">
+                              <a href=""> <img src="{{bid.image_a.url }}" alt=""></a>
+                            </div>
+
+                        </div>
+                        <div class=" text-center">
+                            <div class="">
+                              <a href=""> <img src="{{bid.image_b.url}} " alt=""></a>
+                            </div>
+
+                        </div>
+                        <div class=" text-center">
+                            <div class="">
+                              <a href=""> <img src="{{bid.image_c.url }}" alt=""></a>
+                            </div>
+
+                        </div>
+                        <div class=" text-center">
+                            <div class="">
+                              <a href=""> <img src="{{bid.image_d.url }} " alt=""></a>
+                            </div>
+
+                        </div>
+                        <div class=" text-center">
+                            <div class="">
+                              <a href=""> <img src="{{bid.image_e.url }}" alt=""></a>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+     <!-- featured_candidates_area_start  -->
+    <div class="job_details_area" style="margin-top:-150px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="job_sumary">
+                        <div class="summery_header">
+                            <h3>Car Summery</h3>
+                        </div>
+                        <div class="job_content">
+                            <ul>
+                                <li>car name : <span> {{bid.title}}</span></li>
+                                <li>Published on:  <span>{{bid.published_at}}</span></li>
+                                <li>price: <span> {{bid.price}}</span></li>
+                                <li>mileage: <span>{{bid.mileage}} KM</span></li>
+                                <li>Car Engine : <span>{{bid.engine}} CC</span></li>
+                                <li>Transmission type : <span>{{bid.transmission}} </span></li>
+                                <li>Body Color: <span>{{bid.color}}</span></li>
+                                <li>model: <span>{{bid.model_car}}</span></li>
+                                <li>Body style: <span>{{bid.car_type}}</span></li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="job_sumary">
+                        <div class="summery_header">
+                            <h3>Bidding</h3>
+                        </div>
+                        <div class="job_content">
+<!--                            <li>price :  <span></span></li>-->
+
+                        </div>
+
+                      <form class="form-contact contact_form "  method="POST" >
+                                {% csrf_token %}
+                          {% bootstrap_form form %}
+
+                                <div class="form-group mt-3 text-center">
+                                  <button type="submit" class="button button-contactForm btn_4 boxed-btn ">Bid</button>
+                                </div>
+                              </form>
+                    </div>
+
+
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="job_sumary">
+                        <div class="summery_header">
+                            <h3>Bidders</h3>
+                        </div>
+
+
+                        <div class="job_content">
+                            {% for bidder in bidders%}
+
+                            <ul>
+
+
+                                <li>{{bidder.owner_bid}} <span>{{bidder.bid_price}}</span></li>
+
+
+                            </ul>
+                            {% endfor %}
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+{% endblock%}
